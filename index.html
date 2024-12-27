@@ -6,33 +6,35 @@
     <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script type="text/babel"> // type을 지정하여 babel을 이용해 코드 변환환
+    <script type="text/babel">
         const root = document.getElementById("root");
-        // jsx 사용용
-        const Title = (
-            <h3 id="title" onMouseEneter={() => console.log("mouse enter")}>
-                Hello I'm a title
-            </h3>
+
+        function Title() {
+            return (
+                <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
+                    Hello I'm a title
+                </h3>
+            );
+        }
+
+        const Button = () => (
+            <button
+                style={{
+                    backgroundColor: "tomato",
+                }}
+                onClick={() => console.log("im clicked")}
+            >
+                Click me
+            </button>
         );
-        const Button = <button style={{
-            backgroundColor: "tomato"
-        }} onClick={() => console.log("im clicked")}>Click me</button>
 
-        // createElement는 오래된 방법 => 아무도 안쓴다...
-        // const h3 = React.createElement("h3", {
-        //     id: "title",
-        //     onMouseEnter: () => console.log("mouse enter"),
-        // }, "Hello I'm a span");
+        const Container = (
+            <div>
+                <Title />
+                <Button />
+            </div>
+        );
 
-        // const btn = React.createElement("button", {
-        //     onClick: () => console.log("im clicked"),
-        //     style: {
-        //         backgroundColor: "tomato"
-        //     }
-        // }, "Click me");
-
-        const div = React.createElement("div", null, [Title, Button]);
-
-        ReactDOM.render(div, root);
+        ReactDOM.render(Container, root);
     </script>
 </html>
