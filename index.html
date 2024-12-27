@@ -7,11 +7,21 @@
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
     <script>
         const root = document.getElementById("root");
-        const span = React.createElement( // 자바스크립트를 이용해해 element 만들기
-            "span",
-            {id: "sexy-span", style: {color: "red"}},
-            "Hello I'm a span"
-        ); // 유저에게 보여줄 내용을 컨트롤 할 수 있음음
-        ReactDOM.render(span, root); // root에 안에 넣기 (React JS가 HTML로 번역역)
+
+        const h3 = React.createElement("h3", {
+            id: "title",
+            onMouseEnter: () => console.log("mouse enter"),
+        }, "Hello I'm a span");
+
+        const btn = React.createElement("button", {
+            onClick: () => console.log("im clicked"),
+            style: {
+                backgroundColor: "tomato"
+            }
+        }, "Click me");
+
+        const div = React.createElement("div", null, [h3, btn]);
+
+        ReactDOM.render(div, root);
     </script>
 </html>
