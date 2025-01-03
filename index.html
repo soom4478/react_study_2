@@ -7,20 +7,24 @@
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
-        const root = document.getElementById("root");
         function App() {
-            let [counter, setCounter] = React.useState(0); // [값 , 함수]
-            const onClick = () => {
-                // setCounter(counter + 1);
-                setCounter((current) => current+1); // 동일한 방법이지만 더 안전전
+            const [minutes, setMinutes] = React.useState();
+            const onChange = (event) => {
+                setMinutes(event.target.value);
+
             }
-            return (
+            return(
                 <div>
-                    <h3>Total clicks: {counter}</h3>
-                    <button onClick = {onClick}>Click me</button>
+                    <h1 className="hi">Super Converter</h1>
+                    <label for="minutes">Minutes</label>
+                    <input value={minutes} id="Minutes" placeholder="Minutes" type="number" onChange={onChange}/>
+                    <h4>You want to convert {minutes}</h4>
+                    <label for="hours">Hours</label>
+                    <input id="Hours" placeholder="Hours" type="number"/>
                 </div>
-            )
-        };
+            );
+        }
+        const root = document.getElementById("root");
         ReactDOM.render(<App />, root);
     </script>
 </html>
