@@ -11,7 +11,8 @@
         function App() {
             let [counter, setCounter] = React.useState(0); // [값 , 함수]
             const onClick = () => {
-                setCounter(counter + 1);
+                // setCounter(counter + 1);
+                setCounter((current) => current+1); // 동일한 방법이지만 더 안전전
             }
             return (
                 <div>
